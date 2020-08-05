@@ -2,6 +2,7 @@ package main
 
 import (
 	"go-jwt/controller"
+	"go-jwt/middlewares"
 	"go-jwt/service"
 	"net/http"
 
@@ -21,6 +22,7 @@ func main() {
 
 	server := gin.New()
 
+	//Login Endpoint: Authentication + Token Creation
 	server.POST("/login", func(ctx *gin.Context) {
 		token := loginController.Login(ctx)
 		if token != "" {
@@ -31,6 +33,23 @@ func main() {
 			ctx.JSON(http.StatusUnauthorized, nil)
 		}
 	})
+
+	//JWT Authorization Middleware applies to "/api" only
+	apiRoutes := server.Group("/api", middlewares.AuthorizeJWT())
+	{
+		apiRoutes.GET("/videos", func(ctx *gin.Context) {
+			ctx.JSON(200, videoController.FindAll())
+		})
+
+		apiRoutes.POST("/videos", func(ctx *gin.Context) {
+			err := videoController.Save(ctx)
+			if err != nil {
+				ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			} else {
+				ctx.JSON(http.StatusOK, gin.H{"message": "Video Input is Valid"})
+			}
+		})
+	}
 
 	// server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth())
 
