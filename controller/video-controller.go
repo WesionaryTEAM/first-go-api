@@ -28,7 +28,7 @@ func (c *controller) FindAll() []entity.Video {
 
 func (c *controller) Save(ctx *gin.Context) error {
 	var video entity.Video
-	err := ctx.BindJSON(&video)
+	err := ctx.ShouldBindJSON(&video)
 	if err != nil {
 		return err
 	}

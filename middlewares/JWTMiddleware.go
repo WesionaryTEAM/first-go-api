@@ -1,8 +1,8 @@
 package middlewares
 
 import (
-	"fmt"
 	"go-jwt/service"
+	"log"
 	"net/http"
 
 	"github.com/dgrijalva/jwt-go"
@@ -19,9 +19,15 @@ func AuthorizeJWT() gin.HandlerFunc {
 
 		if token.Valid {
 			claims := token.Claims.(jwt.MapClaims)
-			fmt.Println(claims)
+			log.Println("Claims[Name]: ", claims["name"])
+			log.Println("Claims[Admin]: ", claims["admin"])
+			log.Println("Claims[Issuer]: ", claims["iss"])
+			log.Println("Claims[IssuedAt]: ", claims["iat"])
+			log.Println("Claims[ExpiresAt]: ", claims["exp"])
+			// fmt.Println(claims)
 		} else {
-			fmt.Println(err)
+			// fmt.Println(err)
+			log.Println(err)
 			c.AbortWithStatus(http.StatusUnauthorized)
 		}
 	}
