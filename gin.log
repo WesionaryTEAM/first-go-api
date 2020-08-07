@@ -6,5 +6,13 @@
 [GIN-debug] GET    /api/videos               --> main.main.func2 (4 handlers)
 [GIN-debug] POST   /api/videos               --> main.main.func3 (4 handlers)
 [GIN-debug] Listening and serving HTTP on :8080
-[GIN] 2020/08/06 - 12:33:57 | 200 |     23.9348ms |             ::1 | POST     "/login"
-[GIN] 2020/08/06 - 12:36:06 | 401 |     25.9278ms |             ::1 | POST     "/api/videos"
+[GIN] 2020/08/07 - 11:09:11 | 404 |            0s |             ::1 | GET      "/login"
+[GIN] 2020/08/07 - 11:09:11 | 404 |            0s |             ::1 | GET      "/favicon.ico"
+[GIN] 2020/08/07 - 11:13:54 | 401 |      6.9826ms |             ::1 | POST     "/api/videos"
+[GIN] 2020/08/07 - 11:14:16 | 401 |            0s |             ::1 | POST     "/api/videos"
+[GIN] 2020/08/07 - 11:14:22 | 401 |       997.7µs |             ::1 | GET      "/api/videos"
+[GIN] 2020/08/07 - 11:16:43 | 401 |      6.9807ms |             ::1 | POST     "/login"
+[GIN] 2020/08/07 - 11:17:07 | 200 |     23.9348ms |             ::1 | POST     "/login"
+[GIN] 2020/08/07 - 11:18:20 | 401 |       998.4µs |             ::1 | POST     "/api/videos"
+[GIN] 2020/08/07 - 11:18:49 | 401 |            0s |             ::1 | POST     "/api/videos"
+[GIN] 2020/08/07 - 11:19:59 | 401 |       996.3µs |             ::1 | GET      "/api/videos"
