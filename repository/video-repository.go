@@ -24,7 +24,7 @@ func NewVideoRepositroy() VideoRepository {
 	if err != nil {
 		panic("Failed to connect to database")
 	}
-	db.AutoMigrate(&entity.Video, &entity.Person)
+	//db.AutoMigrate(&entity.Video, &entity.Person)
 	return &database{
 		connection: db,
 	}

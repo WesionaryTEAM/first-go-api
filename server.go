@@ -3,6 +3,7 @@ package main
 import (
 	"go-jwt/controller"
 	"go-jwt/middlewares"
+	"go-jwt/repository"
 	"go-jwt/service"
 	"io"
 	"net/http"
@@ -12,7 +13,8 @@ import (
 )
 
 var (
-	videoService    service.VideoService       = service.New()
+	videoRepository repository.VideoRepository = repository.NewVideoRepositroy()
+	videoService    service.VideoService       = service.New(videoRepository)
 	videoController controller.VideoController = controller.New(videoService)
 )
 
@@ -22,6 +24,8 @@ func setupLogOutput() {
 }
 
 func main() {
+
+	defer videoRepository.CloseDB()
 
 	setupLogOutput()
 
