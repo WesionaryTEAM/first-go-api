@@ -1,0 +1,4 @@
+github.com/joho/godotenv v1.3.0 h1:Zjp+RcGpHhGlrMbJzXTrZZPrWj+1vfm90La1wgB6Bhc=
+github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
+github.com/kraken-io/kraken-go v0.0.0-20180713041222-0147413df30d h1:TiQeXsvET9N7kBHTQpTBp/7keKXiWVpj2GjGw1IZF24=
+github.com/kraken-io/kraken-go v0.0.0-20180713041222-0147413df30d/go.mod h1:LTBy41O6YfIQZX7/SH5rsfnL32bEDZ2M7Ox1X/hh+mw=
