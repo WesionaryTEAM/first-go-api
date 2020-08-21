@@ -40,5 +40,4 @@ func ImageUpload() {
 	} else {
 		log.Println("Success, Optimized image URL: ", data["kraked_url"])
 	}
-
 }
