@@ -2,6 +2,7 @@ package main
 
 import (
 	"cloud-upload/config"
+	"cloud-upload/routes"
 	"fmt"
 	"log"
 
@@ -21,5 +22,13 @@ func main() {
 		fmt.Println("We are getting the env values")
 	}
 
+	//Initializing database
 	config.InitializeDatabase()
+
+	//Migrating tables
+	//config.DB.AutoMigrate(&models.Person{})
+
+	r := routes.SetupRouter()
+
+	r.Run()
 }

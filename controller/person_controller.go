@@ -5,15 +5,14 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 )
 
 //Adding a person
 func CreatePerson(c *gin.Context) {
-	db := c.MustGet("db").(*gorm.DB)
+	// db := c.MustGet("db").(*gorm.DB)
 	var person models.Person
 	c.BindJSON(&person)
-	_, err := models.Save(db)
+	err := models.AddPerson(&person)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {

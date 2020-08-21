@@ -9,6 +9,8 @@ import (
 	"gorm.io/gorm"
 )
 
+var DB *gorm.DB
+
 type DBConfig struct {
 	Host     string
 	Port     string
