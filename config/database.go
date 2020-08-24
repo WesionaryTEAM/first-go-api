@@ -57,7 +57,7 @@ func InitializeDatabase() (DB *gorm.DB) {
 		fmt.Printf("Cannot connect to database. Host name: %s", dbHost)
 		log.Fatal("This is the error:", err)
 	} else {
-		fmt.Printf("We are connected to the %s database", "mysql")
+		fmt.Printf("We are connected to the %s database \n", "mysql")
 	}
 
 	return db

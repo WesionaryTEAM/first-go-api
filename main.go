@@ -2,6 +2,7 @@ package main
 
 import (
 	"cloud-upload/config"
+	"cloud-upload/models"
 	"cloud-upload/routes"
 	"fmt"
 	"log"
@@ -23,7 +24,7 @@ func main() {
 	}
 
 	//Initializing database
-	config.InitializeDatabase()
+	config.InitializeDatabase().AutoMigrate(&models.Person{})
 
 	//Migrating tables
 	//config.DB.AutoMigrate(&models.Person{})

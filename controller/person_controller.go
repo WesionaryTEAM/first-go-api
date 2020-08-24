@@ -22,22 +22,24 @@ func CreatePerson(c *gin.Context) {
 
 	errForm := c.Request.ParseForm()
 	log.Println(errForm)
-	name := c.Request.Form.Get("name")
+	//name := c.Request.Form.Get("name")
+	photoPath := c.Request.Form.Get("photo")
 
-	id := c.Param("id")
+	//id := c.Param("id")
 
 	file, _, err := c.Request.FormFile("photo")
+
 	switch err {
 	case nil:
 		defer file.Close()
 
-		photo = imageUpload.ImageUpload()
+		photo = imageUpload.ImageUpload(photoPath)
 		if photo == "" {
 			fmt.Println("error getting url of image")
 			return
 		}
 	default:
-		photo = ""
+		photo = "picture could not be uploaded"
 		log.Println(err)
 		return
 	}

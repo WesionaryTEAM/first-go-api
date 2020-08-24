@@ -1,6 +1,7 @@
 package imageUpload
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -8,7 +9,7 @@ import (
 	"github.com/kraken-io/kraken-go"
 )
 
-func ImageUpload() {
+func ImageUpload(picturePath string) string {
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatalf("Error loading .env file")
@@ -27,7 +28,7 @@ func ImageUpload() {
 		"wait": true,
 	}
 
-	imgPath := `C:\Users\HP\Downloads\my_picture.jpg`
+	imgPath := picturePath //`C:\Users\HP\Downloads\my_picture.jpg`
 
 	data, err := kr.Upload(params, imgPath)
 
@@ -40,4 +41,8 @@ func ImageUpload() {
 	} else {
 		log.Println("Success, Optimized image URL: ", data["kraked_url"])
 	}
+
+	url := fmt.Sprintf("%v", data["kraked_url"])
+
+	return url
 }
