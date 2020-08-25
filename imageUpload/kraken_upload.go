@@ -1,7 +1,6 @@
 package imageUpload
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -42,7 +41,7 @@ func ImageUpload(picturePath string) string {
 		log.Println("Success, Optimized image URL: ", data["kraked_url"])
 	}
 
-	url := fmt.Sprintf("%v", data["kraked_url"])
+	//url := fmt.Sprintf("%v", data["kraked_url"])
 
-	return url
+	return data["kraked_url"].(string)
 }
